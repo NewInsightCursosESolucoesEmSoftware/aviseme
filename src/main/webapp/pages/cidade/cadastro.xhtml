@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/pages/index.xhtml">
+
+	<ui:define name="central">
+
+		<h:form>
+
+			<header></header>
+
+			<article>
+				<header>Cadastro de Cidade</header>
+
+				<h:outputLabel value="Nome:" for="nome" />
+				<h:inputText id="nome" value="#{cidadeController.entidade.nome}"
+					title="Nome da cidade" size="60" maxlength="255"
+					pt:placeholder="Digite o nome da cidade."></h:inputText>
+
+				<br /> <br />
+				<h:outputLabel value="Estado" for="estado" />
+				<h:selectOneMenu id="estado" converter="estadoConverter"
+					value="#{cidadeController.entidade.estado}">
+					<f:selectItem itemLabel="Selecione" />
+					<f:selectItems value="#{cidadeController.estados}" var="estado"
+						itemLabel="#{estado.nome}" itemValue="#{estado}"></f:selectItems>
+				</h:selectOneMenu>
+
+				<footer>
+					<h:commandButton value="Cadastrar"
+						actionListener="#{cidadeController.gravar}" /> 
+						
+					<h:commandButton value="Cadastrar"
+						actionListener="#{cidadeController.alterar}" />
+					<h:commandButton value="Cadastrar"
+						actionListener="#{cidadeController.buscar}" />
+				</footer>
+
+			</article>
+
+			<footer></footer>
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>
